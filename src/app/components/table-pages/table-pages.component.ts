@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -9,6 +9,15 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [MatButtonModule],
 })
 export class TablePagesComponent {
-  @Input() activePage: number = 4;
+  @Input() activePage: number = 1;
   @Input() pageList: number[] = new Array(7);
+
+  @Output() onPageChanged = new EventEmitter();
+
+  constructor() {}
+
+  selectPage(pageIndex: number) {
+    this.activePage = pageIndex;
+    this.onPageChanged.emit(pageIndex + 1);
+  }
 }

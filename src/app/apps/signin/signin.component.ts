@@ -3,6 +3,7 @@ import {
   inject,
   Input,
   OnChanges,
+  OnDestroy,
   OnInit,
   SimpleChanges,
 } from '@angular/core';
@@ -12,6 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { HomeService } from '../home/home.service';
 
 @Component({
   selector: 'app-signin',
@@ -26,8 +28,12 @@ import { Router } from '@angular/router';
     MatInputModule,
   ],
 })
-export class SigninComponent implements OnInit, OnChanges {
+export class SigninComponent implements OnInit, OnChanges, OnDestroy {
   @Input() username: string = 'zarnihlawn';
+
+  constructor(private homeService: HomeService) {
+    this.homeService.getUserFromServer();
+  }
 
   private route = inject(Router);
 
@@ -43,5 +49,8 @@ export class SigninComponent implements OnInit, OnChanges {
     for (const [key, value] of Object.entries(changes)) {
       (this as any)[key] = value.currentValue;
     }
+  }
+  ngOnDestroy(): void {
+    console.log('Signin Component is Destroyed');
   }
 }
