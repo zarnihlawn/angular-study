@@ -12,5 +12,5 @@ import { RouterOutlet } from '@angular/router';
   ],
 })
 export class AppComponent {
-  title = 'angular-study'; 
+  title = 'angular-study';
 }
