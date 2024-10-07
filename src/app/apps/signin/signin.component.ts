@@ -13,7 +13,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIcon } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { HomeService } from '../home/home.service';
+import { UserListService } from '../public/components/user-list/user-list.service';
 
 @Component({
   selector: 'app-signin',
@@ -31,14 +31,21 @@ import { HomeService } from '../home/home.service';
 export class SigninComponent implements OnInit, OnChanges, OnDestroy {
   @Input() username: string = 'zarnihlawn';
 
-  constructor(private homeService: HomeService) {
-    this.homeService.getUserFromServer();
+  constructor(private userListService: UserListService) {
+    this.userListService.getUserFromServer();
   }
 
   private route = inject(Router);
 
   gotoHome() {
     this.route.navigate(['home'], { replaceUrl: false });
+  }
+  gotoPrivate() {
+    this.route.navigate(['app/private'], { replaceUrl: true });
+  }
+  gotoPublic() {
+    console.log('Public');
+    this.route.navigate(['app/public'], { replaceUrl: true });
   }
 
   ngOnInit(): void {

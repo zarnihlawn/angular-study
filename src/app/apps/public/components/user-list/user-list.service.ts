@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { AppEnvValues } from '../../env/app.env';
-import { UserType } from './home.type';
+import { AppEnvValues } from '../../../../env/app.env';
+import { UserType } from './user-list.type';
 // import { AppEnvValues } from 'src/app/env/app.env';
 
 @Injectable({
   providedIn: 'root',
 })
-export class HomeService {
+export class UserListService {
   constructor(private http: HttpClient) {}
 
   getUserFromServer() {

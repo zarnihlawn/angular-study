@@ -1,0 +1,21 @@
+:host(.app-host) {
+  font-size: large;
+}
+
+.app-window {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .header {
+    margin-bottom: 100%;
+    .title {
+      font-weight: bold;
+    }
+  }
+
+
+}
+
