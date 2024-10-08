@@ -1,5 +1,7 @@
 :host(.app-host) {
-  font-size: large;
+  flex: 1;
+  display: flex;
+  overflow: hidden;
 }
 
 .app-window {

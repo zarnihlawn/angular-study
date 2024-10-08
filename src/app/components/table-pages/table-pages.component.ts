@@ -1,12 +1,13 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
   selector: 'app-table-pages',
   templateUrl: './table-pages.component.html',
   styleUrl: './table-pages.component.scss',
   standalone: true,
-  imports: [MatButtonModule],
+  imports: [MatButtonModule, MatTooltipModule],
 })
 export class TablePagesComponent {
   @Input() activePage: number = 1;

@@ -1,7 +1,7 @@
 :host(.app-host) {
-  background-color: rgb(228, 255, 234);
   flex: 1;
   display: flex;
+  overflow: hidden;
 }
 
 .app-window {
@@ -25,7 +25,7 @@
   .body {
     flex: 1;
     display: flex;
-    overflow: auto;
+    overflow: hidden;
 
   }
 }
