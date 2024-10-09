@@ -1,8 +1,9 @@
 <div class="app-window">
   <div class="header">
     <div class="title">App-Frame</div>
+    <button mat-stroked-button (click)="openDrawer()">Open Drawer</button>
   </div>
   <div class="body">
-    <router-outlet />
+    <app-app-drawer></app-app-drawer>
   </div>
 </div>

@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, ViewChild } from '@angular/core';
 import { TableFirstLastComponent } from '../../../../components/table-first-last/table-first-last.component';
 import { TablePagesComponent } from '../../../../components/table-pages/table-pages.component';
 
@@ -14,6 +14,8 @@ import { debounceTime } from 'rxjs';
 import { UserListService } from './user-list.service';
 import { UserType } from './user-list.type';
 import { MatTooltipModule } from '@angular/material/tooltip';
+import { AppDrawerService } from '../../../app-frame/components/app-drawer/app-drawer.service';
+import { UserListFilterComponent } from './components/user-list-filter/user-list-filter.component';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -39,7 +41,7 @@ import { MatTooltipModule } from '@angular/material/tooltip';
     TablePagesComponent,
   ],
 })
-export class UserListComponent implements AfterViewInit {
+export class UserListComponent implements AfterViewInit, OnDestroy {
   @ViewChild('tablePaginator') tablePaginator!: MatPaginator;
   @ViewChild(MatSort) sort!: MatSort;
 
@@ -59,6 +61,8 @@ export class UserListComponent implements AfterViewInit {
     'occupation',
     'menu',
   ];
+
+  displayedColumns2: string[] = ['religion', 'address'];
   dataSource = new MatTableDataSource<UserType>();
 
   isFirstPage: boolean = true;
@@ -67,7 +71,10 @@ export class UserListComponent implements AfterViewInit {
   usersList: UserType[] = [];
   filteredUsersList: UserType[] = [];
 
-  constructor(private userListService: UserListService) {
+  constructor(
+    private userListService: UserListService,
+    private appDrawerService: AppDrawerService,
+  ) {
     this.userListService.getUserFromServer().then((users) => {
       this.usersList = users;
       this.filterUserList('');
@@ -86,6 +93,7 @@ export class UserListComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.dataSource.sort = this.sort;
     this.dataSource.paginator = this.tablePaginator;
+    this.openPortal();
   }
 
   pageChanged(pageNo: number) {
@@ -128,5 +136,20 @@ export class UserListComponent implements AfterViewInit {
     );
 
     this.dataSource.data = this.filteredUsersList;
+  }
+
+  openDrawer() {
+    this.appDrawerService.openDrawer();
+  }
+
+  openPortal() {
+    this.appDrawerService.setDrawerWidth('400px');
+    this.appDrawerService.setPortalComponent(UserListFilterComponent);
+    this.appDrawerService.openDrawer();
+  }
+  ngOnDestroy(): void {
+    this.appDrawerService.closeDrawer();
+    this.appDrawerService.setPortalComponent(null);
+    this.appDrawerService.setDrawerWidth();
   }
 }

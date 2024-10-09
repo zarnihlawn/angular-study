@@ -18,7 +18,7 @@ export class PrivateComponent {
       if (u) {
         this.user = u;
       } else {
-        this.router.navigate(['/signin'], { replaceUrl: true });
+        this.router.navigate(['/signin']);
       }
     });
   }

@@ -1,0 +1,13 @@
+<mat-drawer-container>
+  <mat-drawer #drawer mode="over" [style]="'width: ' + drawerWidth">
+    <ng-template [cdkPortalOutlet]="selectedPortal"></ng-template>
+  </mat-drawer>
+  <mat-drawer-content>
+    <!-- <p>Drawer Content</p>
+
+    <button mat-stroked-button (click)="openDrawer()">Open Drawer</button>
+    <button mat-stroked-button (click)="closeDrawer()">Close Drawer</button> -->
+
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>

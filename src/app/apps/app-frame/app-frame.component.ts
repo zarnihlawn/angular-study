@@ -1,5 +1,6 @@
 import { style } from '@angular/animations';
 import { Component } from '@angular/core';
+import { AppDrawerService } from './components/app-drawer/app-drawer.service';
 
 @Component({
   selector: 'app-app-frame',
@@ -9,4 +10,10 @@ import { Component } from '@angular/core';
     '[class.app-host]': '1',
   },
 })
-export class AppFrameComponent {}
+export class AppFrameComponent {
+  constructor(private appDrawerService: AppDrawerService) {}
+
+  openDrawer() {
+    this.appDrawerService.openDrawer();
+  }
+}

@@ -38,14 +38,14 @@ export class SigninComponent implements OnInit, OnChanges, OnDestroy {
   private route = inject(Router);
 
   gotoHome() {
-    this.route.navigate(['home'], { replaceUrl: false });
+    this.route.navigate(['home']);
   }
   gotoPrivate() {
-    this.route.navigate(['app/private'], { replaceUrl: true });
+    this.route.navigate(['app/private']);
   }
   gotoPublic() {
     console.log('Public');
-    this.route.navigate(['app/public'], { replaceUrl: true });
+    this.route.navigate(['app/public']);
   }
 
   ngOnInit(): void {
