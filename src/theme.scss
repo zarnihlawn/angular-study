@@ -1,0 +1,13 @@
+@use '@angular/material' as mat;
+@use './resources/assets/green-theme.scss' as gn;
+@use './resources/assets/yellow-theme.scss' as yl;
+
+
+body {
+  @include mat.all-component-themes(yl.$light-theme);
+}
+
+body[mode='dark'] {
+  background-color: black;
+  @include mat.all-component-colors(yl.$dark-theme);
+}

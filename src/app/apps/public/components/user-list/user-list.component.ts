@@ -16,6 +16,8 @@ import { UserType } from './user-list.type';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { AppDrawerService } from '../../../app-frame/components/app-drawer/app-drawer.service';
 import { UserListFilterComponent } from './components/user-list-filter/user-list-filter.component';
+import { ChartComponentComponent } from './components/chart-component/chart-component.component';
+import { MatTabsModule } from '@angular/material/tabs';
 @Component({
   selector: 'app-user-list',
   templateUrl: './user-list.component.html',
@@ -35,10 +37,12 @@ import { UserListFilterComponent } from './components/user-list-filter/user-list
     MatTableModule,
     ReactiveFormsModule,
     MatTooltipModule,
+    MatTabsModule,
 
     // Components
     TableFirstLastComponent,
     TablePagesComponent,
+    ChartComponentComponent,
   ],
 })
 export class UserListComponent implements AfterViewInit, OnDestroy {
