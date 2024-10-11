@@ -2,8 +2,28 @@
   <div class="header">
     <div class="title">Chips</div>
 
-    <button mat-flat-button (click)="changeToDarkMode()">Dark Mode</button>
+    <button mat-flat-button (click)="changeTheme(themeNamesEnum.YELLOW)">
+      Yellow Theme
+    </button>
+    <button mat-flat-button (click)="changeTheme(themeNamesEnum.PURPLE)">
+      Purple Theme
+    </button>
+    <button mat-flat-button (click)="changeTheme(themeNamesEnum.RED)">
+      Red Theme
+    </button>
+    <button mat-flat-button (click)="changeTheme(themeNamesEnum.GREEN)">
+      Green Theme
+    </button>
+    <button mat-flat-button (click)="toggleMode()">Mode</button>
   </div>
+  <div class="button-variants">
+    <p>Button Variants go brrr.....</p>
+    <button mat-flat-button class="primary-button">Primary</button>
+    <button mat-flat-button class="secondary-button">Secondary</button>
+    <button mat-flat-button class="tertiary-button">Tertiary</button>
+    <button mat-flat-button class="error-button">Error</button>
+  </div>
+
   <div class="body">
     <p>Chip Set</p>
     <mat-chip-set>

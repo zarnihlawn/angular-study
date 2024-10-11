@@ -1,0 +1,15 @@
+@use '@angular/material' as mat;
+
+@mixin apply-app-frame-theme($theme) {
+  @if (mat.get-theme-type($theme) == 'dark') {
+    .app-frame-theme {
+      color: white;
+      background-color: black;
+    }
+  } @else {
+    .app-frame-theme {
+      color: black;
+      background-color: white;
+    }
+  }
+}

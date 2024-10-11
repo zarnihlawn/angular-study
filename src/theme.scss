@@ -1,13 +1,58 @@
 @use '@angular/material' as mat;
-@use './resources/assets/green-theme.scss' as gn;
-@use './resources/assets/yellow-theme.scss' as yl;
+@use './resources/assets/themes/green-theme.scss' as g;
+@use './resources/assets/themes/yellow-theme.scss' as y;
+@use './resources/assets/themes/red-theme.scss' as r;
+@use './resources/assets/themes/purple-theme.scss' as p;
 
+@use './resources/assets/themes/app-component/all-mixin.scss' as all;
 
-body {
-  @include mat.all-component-themes(yl.$light-theme);
+@include mat.core();
+
+@mixin apply-theme-colors($light, $dark) {
+  body {
+    @include mat.all-component-colors($light);
+    @include all.apply-all-mixins($light);
+  }
+
+  body[mode='dark'] {
+    @include mat.all-component-colors($dark);
+    @include all.apply-all-mixins($dark);
+  }
 }
 
-body[mode='dark'] {
-  background-color: black;
-  @include mat.all-component-colors(yl.$dark-theme);
+// @mixin apply-app-theme($theme) {
+//   @include mat.all-component-themes($theme);
+
+//   @if (mat.get-theme-type($theme) == 'dark') {
+//     background-color: black;
+//   }
+// }
+
+html,
+html[theme='green'] {
+  $light: g.$light-theme;
+  $dark: g.$dark-theme;
+
+  body {
+    @include mat.all-component-themes($light);
+    @include all.apply-all-mixins($light);
+  }
+
+  body[mode='dark'] {
+    background-color: black;
+    @include mat.all-component-colors($dark);
+    @include all.apply-all-mixins($dark);
+  }
+}
+
+html[theme='yellow'] {
+  @include apply-theme-colors(y.$light-theme, y.$dark-theme);
+}
+
+html[theme='red'] {
+  @include apply-theme-colors(r.$light-theme, r.$dark-theme);
+}
+
+html[theme='purple'] {
+  @include apply-theme-colors(p.$light-theme, p.$dark-theme);
 }
